@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script>
+	$(function(){
+		$('p').click(function(){
+			if($(this).parent().is('div')){
+				$(this).parent().css('border', '3px solid red')
+			}else{
+				alert("부모가 일치하지 않습니다.")
+			}
+		})
+	})
+</script>
+</head>
+<body>
+	<pre>
+- p태그의 문자열을 클릭한다.
+- 부모가 div인지 확인한 후 맞으면 css 적용하고 아니면 알림창을 띄운다. 	
+	</pre>
+	<div>
+		<p>무궁화 꽃이 피었습니다.</p>
+	</div>
+	
+	<p>개나리 꽃이 피었습니다.</p>
+	
+	<div>
+		<p>진달래 꽃이 피었습니다.</p>
+	</div>
+</body>
+</html>

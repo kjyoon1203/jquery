@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/mystyle.css">
+		<style>
+			#tb1{
+				width: 300px;
+				height: 100px;
+				text-align: center;
+			}
+		</style>
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		<script>
+			$(function(){
+				$('#btn1').click(function(){
+					$('li:first-child').css('border','3px solid red');
+					$('li:first').css('background','yellow');
+				})
+				
+				$('#btn2').click(function(){
+					$('table#tb1').css('border-spacing','2px');
+					$('table#tb1,td').css('border-style','none');
+					$('td:first-child').css('background','#787878');
+					$('td:nth-child(2)').css('background','#c8c8c8');
+					$('td:last-child').css('background','white');
+					$('tr:first td').css({'background':'#282828'
+								,'color':'white'});
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div class="box">
+			<h2>자식필터</h2>
+			- 부모 그룹에서 각각의 자식을 선택한다.<br>
+			li:first-child, li:last-child<br>
+			- 전체 문서 중에서 하나의 요소를 선택한다.<br>
+			li:first, li:last<br><br>
+			<h3>여자에게 인기있는 남자들</h3>
+			<ol>
+				<li>능력있는 남자</li>
+				<li>돈 많은 남자</li>
+				<li>잘 생긴 남자</li>
+				<li>프로그래머</li>
+			</ol>
+			<h3>남자에게 인기있는 여자들</h3>
+			<ol>
+				<li>예쁜 여자</li>
+				<li>귀여운 여자</li>
+				<li>섹시한 여자</li>
+			</ol>	
+			<button type="button" id="btn1">실행</button>		
+		</div>
+		
+		<div class="box">
+			<h2>자식필터</h2>
+			td:first-child, td:last-child<br>
+			td:nth-child(index) - index 1부터 시작<br><br>
+			<table id="tb1" border=1>
+				<tr>
+					<td>이름</td> 
+					<td>주소</td>
+					<td>전화번호</td>
+				</tr>
+				<tr>
+					<td>홍길동</td>
+					<td>대전</td>
+					<td>010-222-333</td>
+				</tr>
+				<tr>
+					<td>진달래</td>
+					<td>서울</td>
+					<td>010-333-444</td>
+				</tr>
+				<tr>
+					<td>개나리</td>
+					<td>부산</td>
+					<td>010-444-555</td>
+				</tr>
+				<tr>
+					<td>무궁화</td>
+					<td>대구</td>
+					<td>010-555-666</td>
+				</tr>
+			</table>
+			<br>
+			<button id="btn2" type="button">실행</button>
+		</div>
+	</body>
+</html>

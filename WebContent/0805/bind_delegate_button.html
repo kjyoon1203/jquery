@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style>
+	.d{
+		padding: 10px;
+	}
+</style>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script>
+	$(function(){
+		$('.btn').bind('click',function(){
+			newBtn = $('<button/>',{
+				'type':'button'
+				,'class':'btn'
+				,'text':'새로운버튼'
+			});
+			$(newBtn).appendTo('.d2');
+		});
+		
+		$(document).delegate('.btn2', 'click', function(){
+			newBtn = $('<button/>',{
+				'type':'button'
+				,'class':'btn2'
+				,'text':'새로운버튼2'
+			});
+			$(newBtn).appendTo('.d22');
+		});
+		
+		$('#cle').on('click',function(){
+// 			$('.btn').off('click');
+			$('.btn').unbind('click');
+		});
+		
+		$('#cle2').on('click',function(){
+// 			$(document).undelegate('click');
+			$(document).off('click');
+		});
+	});
+</script>
+</head>
+<body>
+	<div class="box">
+	<h2>bind방식의 이벤트 핸들러</h2>
+	- 실행하기 전에 미리 만들어져 있는 요소에만 이벤트 핸들러가 호출되어 실행<br>
+	- 실행시 동작으로 새롭게 만들어지는 요소에는 핸들러가 적용되지 않는다.<br>
+	- 버튼1, 2, 3에서는 이벤트가 실행되지만 새로운 버튼에는 이벤트가 실행되지 않는다.<br>
+	- $('.btn').bind('click',function(){});<br>
+	- $('.btn').on('click',function(){});<br>
+	- $('.btn').click(function(){});<br>
+	- 이벤트 해제: $('.btn').off('click'); / $('.btn').unbind('click');<br>
+		<div class="d">
+			<button class="btn" type="button">버튼1</button>
+			<button class="btn" type="button">버튼2</button>
+			<button class="btn" type="button">버튼3</button>
+		</div>
+		<br>
+		<button id="cle" type="button">해제</button>
+		<hr>
+		<div class="d2"></div>
+	</div>
+	
+	<div class="box">
+	<h2>delegate방식의 이벤트 핸들러</h2>
+	- 실행하기 전에 미리 만들어져 있거나 동적으로 새롭게 만들어지는 요소에도 같은 이벤트 핸들러가 호출되어 실행<br>
+	- 실행시 동작으로 새롭게 만들어지는 요소에는 핸들러가 적용되지 않는다.<br>
+	- 버튼1, 2, 3에서 이벤트가 실행되고 새로운 버튼에도 이벤트가 실행된다.<br>
+	- $(document).on('click', '.btn', function(){});<br>
+	- $(document).delegate('.btn', 'click', function(){});<br>
+	- document 대신 선택자의 부모가 올 수 있다.<br>
+	- 이벤트 해제: $(document).undelegate('click'); / $(document).off('click');<br>
+	- 이벤트를 줄 때 document로 선택하였으면 해제할 때도 document로 해야함.
+		<div class="d">
+			<button class="btn2" type="button">버튼1</button>
+			<button class="btn2" type="button">버튼2</button>
+			<button class="btn2" type="button">버튼3</button>
+		</div>
+		<br>
+		<button id="cle2" type="button">해제</button>
+		<hr>
+		<div class="d22"></div>
+	</div>
+</body>
+</html>

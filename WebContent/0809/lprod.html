@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style>
+	hr{
+		width: 200px;
+		border: 1px solid blue;
+	}
+</style>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script>
+	$(function(){
+		xhr = new XMLHttpRequest();
+		$('#btn').click(function(){
+			xhr.open("GET", "/jqpro/lprod", true);
+			xhr.send();
+			
+			xhr.onreadystatechange = function(){
+				if(this.readyState == 4 && this.status == 200){
+					datas = JSON.parse(this.responseText);
+					code = "";
+					$.each(datas, function(i){
+						code += "Lprod_ID: " +datas[i].LPROD_ID+ "<br>";
+						code += "Lprod_GU: " +datas[i].LPROD_GU+ "<br>";
+						code += "Lprod_NM: " +datas[i].LPROD_NM+ "<br>";
+						code += "<hr align='left'>";
+					});
+					$('#result').html(code);
+				}
+			}
+		});
+		
+	});
+</script>
+</head>
+<body>
+	<div class="box">
+		<button type="button" id="btn">lprod리스트</button>
+		<br>
+		<div id="result"></div>
+	</div>
+</body>
+</html>

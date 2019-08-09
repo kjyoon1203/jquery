@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style>
+	img{
+		width: 100px;
+		height: 100px;
+	}
+	button{
+		display: none;
+	}
+</style>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script>
+	$(function(){
+		$('img').dblclick(function(){
+			$(this).hide();
+			if($('img:visible').length == 0){
+				$('button').show();
+			}
+		});
+		
+		$('button').on('click', function(){
+			$('img').show();
+			$(this).hide();
+		})
+		
+		$('img').hover(function(){
+			// src의 값이 src2의 값으로 변경전에 src값을 미리 저장
+			temp = $(this).attr('src');
+			
+			// src2의 속성값을 가져온다.
+			vsrc2 = $(this).attr('src2');
+			
+			// src의 속성값으로 설정
+			$(this).attr('src', vsrc2);
+			
+		}, function(){
+			$(this).attr('src', temp);
+		})
+	});
+</script>
+</head>
+<body>
+	<img src = "../images/아메리카노.jpg" src2="../images/가구1.jpg">
+	<img src = "../images/에스프레소.jpg" src2="../images/가구2.jpg">
+	<img src = "../images/카페라떼.jpg" src2="../images/가구3.jpg">
+	<img src = "../images/카푸치노.jpg" src2="../images/단풍.jpg">
+	<img src = "../images/핫초코.jpg" src2="../images/대나무숲.jpg">
+	<br>
+	<button type="button">실행</button>
+</body>
+</html>

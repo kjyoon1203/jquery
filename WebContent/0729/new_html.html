@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="../css/mystyle.css">
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		<script>
+			$(function(){
+				$('#but1').on('click', function(){
+					// 새로운 html생성
+					vpTag = $('<p>무궁화 꽃이 피었습니다.</p>');
+					$('#result1').append(vpTag);
+// 					$('#result1').css('font-size', '1.5em').css('font-weight', 'bold');
+					$('#result1').css({'font-size':'2.0em', 'font-weight':'bold'});
+					/* document.getElementById('result1').innerHTML = vpTag */
+				})
+				
+				$('#but2').on('click', function(){
+					imgArr = ["../images/핫초코.jpg"
+							 ,"../images/americano.jpg"
+							 ,"../images/카푸치노.jpg"
+							 ,"../images/카페라떼.jpg"
+							 ,"../images/에스프레소.jpg"
+							 ,"../images/아메리카노.jpg"]
+					// 랜덤 발생
+					rand = Math.floor(Math.random()*imgArr.length);
+					
+					// img태그 생성
+					//imgTag = $('<img src="../images" width: "150px" height="100px" onclick="proc1()">');
+					imgTag = $('<img>', {
+										'src':imgArr[rand]
+										,'width':'150px'
+										,'height':'100px'
+										,'title':function(){
+											// src속성값을 가져온다
+											//getSrc = this.getAttribute('src');
+											getSrc = $(this).attr('src');
+											start = getSrc.lastIndexOf("/");
+											end = getSrc.lastIndexOf(".");
+											vTitle = getSrc.substring(start+1, end);
+											return vTitle;
+										}
+										,'click':function(){
+											$(this).css('border','2px solid blue');
+										}
+							})
+// 					$('#result2').append(imgTag);
+					$(imgTag).appendTo('#result2');
+										
+				})
+				
+				$('#but3').on('click', function(){
+// 					vDiv = $('div', {});
+// 					$('#result').append(vDiv);
+					$('<div/>', {
+								'text':'클릭하세요'
+								,'click':function(){
+									$(this).css('border','5px solid green');
+								}
+					}).appendTo('#result3');
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div class="box">
+			<h2>$('html')</h2>
+			- 새로운 html요소를 생성<br>
+			- div(result1)안에 추가<br>
+			<br><br>
+			<button id="but1" type="button">실행</button>
+			<div id="result1"></div>
+		</div>
+		
+		<div class="box">
+			<h2>$('html', {properties})</h2>
+			- img요소를 생성<br>
+			- properties(속성): src, width, height, 클릭함수
+			- div(result2)안에 추가<br>
+			<br><br>
+			<button id="but2" type="button">실행</button>
+			<div id="result2"></div>
+		</div>
+		
+		<div class="box">
+			<h2>$('html', {properties})</h2>
+			- div요소를 생성<br>
+			- properties(속성): width, height, 클릭함수
+			- div(result3)안에 추가<br>
+			<br><br>
+			<button id="but3" type="button">실행</button>
+			<div id="result3"></div>
+		</div>
+	</body>
+</html>

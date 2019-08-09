@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="../css/mystyle.css">
+	<style>
+	img{
+		width: 100px;
+		height: 100px;
+	}
+	</style>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+			$('#btn1').click(function(){
+				a =  setInterval(function() {
+					$('img:first').appendTo($('div#result1'));
+				}, 1000);
+				$(this).prop('disabled', true);
+				$('img').css('border','none');
+			})
+			
+			$('#btn2').click(function(){
+				clearInterval(a);
+				$('#btn1').prop('disabled',false);
+				
+				rand = Math.floor(Math.random() * $('#result1 img').length);
+				$('img').filter(':eq('+rand+')').css('border','5px solid red');
+				
+			})
+			
+			$('#result2 p').click(function(){
+				a = $(this).text();
+				$('<img>',{
+					'src':'../images/'+a+'.jpg'
+					,'width':'100px'
+					,'height':'100px'
+				}).appendTo(this);
+			})
+		})
+	</script>
+	</head>
+	<body>
+		<div class="box">
+			- 시작버튼 클릭하면 이미지가 돌아간다<br>
+			- 종료버튼 클릭하면 당첨항목에 테두리를 설정한다<br>
+			- 당첨항목은 랜덤으로 결정한다<br>
+			- 다시 시작버튼을 클릭하면 테두리 설정을 해제한다<br>
+			<div id="result1">
+				<img src="../images/가구1.jpg">
+				<img src="../images/단풍.jpg">
+				<img src="../images/대나무숲.jpg">
+				<img src="../images/셔틀콕.jpg">
+				<img src="../images/아메리카노.jpg">
+				<img src="../images/에스프레소.jpg">
+				<img src="../images/카페라떼.jpg">
+				<img src="../images/카푸치노.jpg">
+			</div>
+			<br>
+			<button type="button" id="btn1">시작</button>
+			<button type="button" id="btn2">종료</button>
+		</div>
+		
+		<div class="box">
+			<h3>p태그의 문자열을 클릭</h3>
+			- 문자열로 구성된 이미지를 추가한다.
+			<div id="result2">
+				<p title="pizza">pizza</p>
+				<p title="카푸치노">카푸치노</p>
+				<p title="카페라떼">카페라떼</p>
+				<p title="핫초코">핫초코</p>
+			</div>
+		</div>
+	</body>
+</html>

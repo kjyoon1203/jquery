@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style>
+	img{
+		width: 100px;
+		height: 100px;
+		margin: 10px;
+		position: relative;
+	}
+</style>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script>
+	$(function(){
+		$('#left').click(function(){
+			$('img').animate({left:'+=100px', width:'+=5px', height:'+=5px'}, 1000);
+		});
+		$('#right').click(function(){
+			$('img').animate({left:'-=100px'}, 1000)
+					.delay(1000)
+					.animate({width: '-=5px'}, 500);
+// 			$('img').animate({right:'+=100px'}, 1000);
+		});
+		$('#opc').click(function(){
+			setInterval(function(){
+				$('img').animate({left:'+=100px'}, 500)
+						.animate({opacity:'-=0.5'}, 500)
+						.delay(1500)
+						.animate({left:'-=100px'}, 500)
+						.animate({opacity:'+=0.5'}, 500);
+			}, 1000);
+		});
+	});
+</script>
+</head>
+<body>
+	<div class="box">
+		<pre><h2>animation</h2>
+- animate() 메소드 이용
+- css속성과 millisec 단위의 지속시간이 매개변수로 온다.
+- left: 100px - 왼쪽 좌표를 100px로 변경, 오른쪽으로 이동하는 효과이다.
+- 이동하는 요소를 style에서 position속성 설정해야 한다.		
+		</pre>
+		<button type='button' id="left">left</button>
+		<button type='button' id="right">right</button>
+		<button type='button' id="opc">이동&투명도</button>
+		<br><br>
+		<img src="../images/image.5.jpg">
+	</div>
+</body>
+</html>

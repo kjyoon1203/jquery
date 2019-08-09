@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style>
+	.cborder{
+		border: 3px solid blue;
+	}
+
+	#main{
+		width: 650px;
+		height: 400px;
+		background: #F5F6CE;
+	}
+	.guess_box{
+		float: left;
+		width: 140px;
+		height: 300px;
+		background: #F7D358;
+		margin: 5px;
+		padding: 5px;
+		text-align: center;
+	}
+	img{
+		width: 130px;
+		height: 130px;
+	}
+</style>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script>
+	$(function(){
+		$('img').hover(function(){
+// 			$(this).css('border','3px solid blue');
+			$(this).addClass("cborder");
+		}
+		,function(){
+			$(this).removeClass("cborder");	
+		});
+		
+		$('.guess_box').click(function(){
+			$('.pg').remove();
+			
+			rand = Math.floor(Math.random() * 6 + 5);
+			
+			pTag = $('<p/>',{
+				'class':'pg'
+				,'text':'할인율: ' + rand + '%'
+			});
+			
+			$(pTag).appendTo(this);
+			
+			$(this).off('click');
+		});
+	});
+</script>
+</head>
+<body>
+	<div id="header">
+	   <h2> Jump for Joy Sale </h2>
+	</div>
+	
+	<div id="main">
+	   <div class="guess_box"><img src="../images/아메리카노.jpg" /></div>
+	   <div class="guess_box"><img src="../images/카페라떼.jpg" /></div>
+	   <div class="guess_box"><img src="../images/카푸치노.jpg" /></div>
+	   <div class="guess_box"><img src="../images/에스프레소.jpg" /></div>
+	</div>
+
+</body>
+</html>

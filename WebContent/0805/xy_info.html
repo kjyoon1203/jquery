@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style type="text/css">
+	div{
+	 	border: 1px solid red;
+		height: 50px;
+		padding: 10px;
+	}
+</style>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script>
+	$(function(){
+// 		$('body').mousemove
+		$(document).mousemove(function(e){
+			res = "X: " + e.pageX + ", Y: "+ e.pageY;
+			
+			$('div').html(res);
+			
+			// xy좌표값이 200, 200이면 새로운 이미지를 추가한다.
+			if(e.pageX == 200 && e.pageY == 200){
+				imgTag = $('<img>', {
+					'src':'../images/식품2.jpg'
+					,'width':'100px'
+					,'height':'100px'
+				});
+				
+				$('body').append(imgTag);
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

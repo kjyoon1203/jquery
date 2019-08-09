@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style>
+	#result1, #result2{
+		background: yellow;
+	}
+</style>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script>
+	$(function(){
+		$('#btn1').click(function(){
+			$('#result1').empty();
+		})
+		
+		$('#btn2').click(function(){
+			$('#result1').remove();
+		})
+		
+		$('#btn3').click(function(){
+			p = $('#result2').remove();
+			$('.box').append(p);
+		})
+		
+		$('#btn4').click(function(){
+			p = $('#result2').detach();
+			$('.box').append(p);
+		})
+		$('.pp').click(function(){
+			$(this).css('font-size','1.5em');
+		})
+		
+		$('#btn5').click(function(){
+			p = $('#p3').clone();
+			$('#result3').append(p);
+		})
+		
+		$('#btn6').click(function(){
+			p = $('#p4').clone(true);
+			$('#result3').append(p);
+		})
+	})
+</script>
+</head>
+<body>
+	<div class="box">
+		<h2>empty와 remove</h2>
+		- empty(): 대상 셀럭터의 자식을 지운다, 대상 셀렉터를 비운다 <br>
+		- remove(): 대상 셀렉터를 지운다 <br> 
+		
+		<div id="result1">
+			<p>무궁화 꽃이 피었습니다.</p>
+			<p>장미꽃도 피었습니다.</p>
+		</div>
+		<br>
+		<button type="button" id="btn1">empty():비우기</button>
+		<button type="button" id="btn2">remove():지우기</button>
+	</div>
+	
+	<div class="box">
+		<h2>remove와 detach</h2>
+		- remove(): 대상 셀렉터를 지운다, 이벤트 핸들러도 지워진다 <br> 
+		- detach(): 대상 셀럭터를 지운다, 이벤트 핸들러는 지워지지 않는다  <br>
+		<br>
+		- p태그의 문자열을 클릭하면 글자크기를 증가시킨다.
+		<div id="result2">
+			<p id="p1" class="pp">무궁화 꽃이 피었습니다.</p>
+			<p id="p2" class="pp">장미꽃도 피었습니다.</p>
+		</div>
+		<br>
+		<button type="button" id="btn3">remove():지우기</button>
+		<button type="button" id="btn4">detach():지우기</button>
+	</div>
+	
+	<div class="box">
+		<h2>clone</h2>
+		- clone(): 대상 셀렉터를 복사한다, 이벤트 핸들러는 복사되지 않는다<br> 
+		- clone(true): 대상 셀럭터를 복사한다, 이벤트 핸들러도 복사된다<br>
+		<br>
+		- p태그의 문자열을 클릭하면 글자크기를 증가시킨다.
+		<div id="result3">
+			<p id="p3" class="pp">무궁화 꽃이 피었습니다.</p>
+			<p id="p4" class="pp">장미꽃도 피었습니다.</p>
+		</div>
+		<br>
+		<button type="button" id="btn5">clone()</button>
+		<button type="button" id="btn6">clone(true)</button>
+	</div>
+</body>
+</html>

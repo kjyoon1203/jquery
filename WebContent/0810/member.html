@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script>
+	$(function(){
+		$('#btn1').click(function(){
+			$.ajax({
+				url: '/jqpro/MemberSelect',
+				dataType: 'json',
+				success: function(datas){
+// 					datas = JSON.parse(this.responseText);
+					code = "<table border='1'>";
+					code += "<tr><td>이름</td><td>아이디</td><td>주소</td><td>전화번호</td></tr>"
+					$.each(datas, function(i){
+						code += "<tr>";
+						code += "<td>" + datas[i].name; + "</td>";	// datas[i].name 에서 name은 jsp의 json{}에서 정해준 "name"과 일치해야 한다.
+						code += "<td>" + datas[i].id + "</td>";
+						code += "<td>" + datas[i].addr + "</td>";
+						code += "<td>" + datas[i].hp + "</td>";
+						code += "</tr>";
+					});
+					code += "</table>";
+					$('#result1').html(code);
+				}
+			});
+			
+		});
+	});
+</script>
+</head>
+<body>
+	<div class="box">
+		<button type="button" id="btn1">멤버리스트</button>
+		<br>
+		<div id="result1"></div>
+	</div>
+</body>
+</html>

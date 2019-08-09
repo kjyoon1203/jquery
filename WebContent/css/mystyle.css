@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+.box{
+	background: lightyellow;
+	border-top: 3px solid blue;
+	border-bottom: 3px solid blue;
+	margin: 20px;
+	padding: 10px;
+	font-size: 1.2em;
+}
+
+.box button, button{
+/* 	color: white; */
+	font-weight: bold;
+	background: pink;
+	padding: 5px 20px;
+	border-radius: 20px;
+	font-size: 20px;
+	margin-left: 10px;
+}
+
+.box div{
+	border: 2px dashed orange;
+	margin-top: 10px;
+	height: auto;
+	padding: 5px;
+}

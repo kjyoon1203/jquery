@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style>
+	img{
+		width: 200px;
+		height: 200px;
+	}
+	
+	.clength{
+		width: 300px;
+		height: 300px;
+	}
+	
+	.cborder{
+		border: 3px solid red;
+	}
+	
+	.h:hover{
+		background: yellow;
+	}
+</style>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script>
+	$(function(){
+		$('#show').click(function(){
+			$('img#dog').show(1000, 'swing', function(){
+				alert("멍멍");
+			});
+		});
+		
+		$('#hide').click(function(){
+			$('img#dog').hide(100);
+		});
+		
+		$('#toggle').click(function(){
+			$('img#dog').toggle('slow');
+		});
+		
+		$('#sup').click(function(){
+			$('img#dog').slideUp();
+		});
+		
+		$('#sdown').click(function(){
+			$('img#dog').slideDown();
+		});
+		
+		$('#stoggle').click(function(){
+			$('img#dog').slideToggle();
+		});
+		
+		$('#fin').click(function(){
+			$('img#dog').fadeIn(2000, 'linear');
+		});
+		
+		$('#fout').click(function(){
+			$('img#dog').fadeOut(1000, 'linear');
+		});
+		
+		$('#fto').click(function(){
+			$('img#dog').fadeTo(1000, 0.5);
+		});
+		
+		$('#ftoggle').click(function(){
+			$('img#dog').fadeToggle();
+		});
+		$('img#cof').click(function(){
+			$(this).toggleClass("clength");
+		});
+		
+		$('img#cof').hover(function(){
+			$(this).addClass("cborder");
+		}, function(){
+			$(this).removeClass("cborder");
+		});
+		
+		$('h1').hover(function(){
+			$(this).addClass("h");
+		}, function(){
+			$(this).removeClass("h");
+		});
+	})
+</script>
+</head>
+<body>
+	<div class="box">
+	<h2>effect</h2>
+		<button type="button" id="show">show</button>
+		<button type="button" id="hide">hide</button>
+		<button type="button" id="toggle">toggle</button>
+		<br>
+		<button type="button" id="sup">slideUp</button>
+		<button type="button" id="sdown">slideDown</button>
+		<button type="button" id="stoggle">slideToggle</button>
+		<br>
+		<button type="button" id="fin">fadeIn</button>
+		<button type="button" id="fout">fadeOut</button>
+		<button type="button" id="fto">fadeTo</button>
+		<button type="button" id="ftoggle">fadeToggle</button>
+		
+		<hr>
+		<img src="../images/dog.png" id="dog">
+	</div>
+	
+	<div class="box">
+		<h2>CSS 관련 메소드</h2>
+	- addClass() / removeClass() / toggleClass()<br>
+	- style에 클래스를 미리 지정하고 css메소드 대신 사용한다.<br>
+	- 이미지를 클릭하면 크기를 변경<br>
+	- 이미지 hover시 테두리를 설정 및 해제<br>
+		<img src="../images/coffee1.jpg" id="cof">
+		<h1>아메리카노</h1>
+		<h1>카페라떼</h1>
+		<h1>카푸치노</h1>
+	</div>
+</body>
+</html>

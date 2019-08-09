@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script>
+	$(function(){
+		$('#contents').click(function(){
+			str = "Contents<br>";
+			$('#d1').contents().each(function(i){
+// 				str += $(this).html()+"<br>";
+				// 태그 이름이 undefined일 경우
+				if(typeof this.tagName == 'undefined'){
+					// 태그 없는 자식 요소중 공백요소는 걸러낸다.
+					if($(this).text().trim().length > 0)
+						str += i+"번째 문자열: "+$(this).text()+"<br>";
+				}else{
+					str += i +"번쨰 태그이름: "+this.tagName+" /내용: "+$(this).html()+"<br>";
+				}
+			})
+			$('#result1').html(str);
+		})
+		
+		$('#children').click(function(){
+			str1 = "Children<br>";
+			$('#d1').children().each(function(i){
+// 				if(typeof this.tagName == 'undefined'){
+					// 태그 없는 자식 요소중 공백요소는 걸러낸다.
+// 					if($(this).text().trim().length > 0)
+// 						str1 += i+"번째 문자열: "+$(this).text()+"<br>";
+// 				}else{
+					str1 += i +"번쨰 태그이름: "+this.tagName+" /내용: "+$(this).html()+"<br>";
+// 				}			
+			})
+			$('#result2').html(str1);
+		})
+		
+	})
+</script>
+</head>
+<body>
+	<div class="box">
+	<pre>
+contents(): 자식요소들을 선택, 태그 존재여부와 관계없이 선택 대상이 된다.
+children(): 태그가 있는 자식요소들만을 대상으로 선택한다.
+	</pre>
+	<div id="d1">A
+		<p>p태그 안녕하세요</p>
+		<span>스판
+			<span>스판의 스판</span>
+		</span>
+	</div>
+	<button type="button" id="contents">contents()</button>
+	<button type="button" id="children">children()</button>
+	<br>
+	<div id="result1"></div>
+	<div id="result2"></div>
+	</div>
+</body>
+</html>

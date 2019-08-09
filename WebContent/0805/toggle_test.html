@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style>
+	div{
+		display: none;
+	}
+</style>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script>
+	$(function(){
+		$('a').bind('click',function(){
+			event.preventDefault();
+			$('div').toggle();
+		});
+		
+// 		$('h1.hh').mouseover(function(){
+/* 		$('h1.hh').bind('mouseover', function(){
+			$(this).css('background','lime');
+		});
+		$('h1.hh').bind('mouseout', function(){
+			$(this).css('background','white');			
+		}); */
+		$('h2.hh').hover(function(){
+				$(this).css('background','lime');
+			}
+			,function(){
+				$(this).css('background','white');	
+		});
+	});
+	
+</script>
+</head>
+<body>
+	<pre>
+<strong>toggle()</strong>은 show() / hide()가 번갈아 가면서 수행<br>
+자세히 보기를 클릭하면 toggle()메소드가 실행
+	</pre>
+	<h1>이순신</h1>
+	<h2>조선시대의 해군</h2>
+	<a href="#">자세히 보기</a>
+	<br>
+	<div>
+	이순신은 조선 중기의 무신이자 임진왜란 당시 조선 수군을 통솔했던 지휘관이자 구국영웅으로,
+	 자는 여해(汝諧)이며, 시호는 충무공(忠武公)이다.	
+	</div>
+	<hr>
+	<pre>
+hover(fn1, fn2): mouseover와 mouseout 이벤트를 실행
+	</pre>
+	<h2 class="hh">아메리카노</h2>
+	<h2 class="hh">카페라떼</h2>
+	<h2 class="hh">카푸치노</h2>
+	<h2 class="hh">모카라떼</h2>
+	
+</body>
+</html>

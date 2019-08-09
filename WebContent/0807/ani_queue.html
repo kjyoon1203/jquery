@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style>
+	div{
+		width: 100px;
+		height: 100px;
+		background: green;
+		display: none;
+		position: relative;
+	}
+	h2{
+		position: relative;
+	}
+</style>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script>
+	$(function(){
+		$('button#btn1').click(function(){
+			$('div').show(1000);	// $('div').css('display', 'block');
+			$('div').animate({left:'200px'}, 1000)
+					.delay(500);
+			
+			$('div').queue(function(){
+				$(this).css('background','red');
+				$(this).dequeue();
+			});
+			$('div').animate({left:'-=200px'},1000)
+					.delay(1000);
+			
+			$('div').queue(function(){
+				$(this).css('background','green');
+				$(this).dequeue();
+			});
+		});
+		
+		$('#btn2').click(function(){
+// 			setInterval(change, 1000);
+			setInterval(() => {
+				change();
+			}, 1000);
+		});
+		
+		function change(){
+			$('h2').animate({'font-size':'+=10px', left:'+=100'}, 1000);
+			
+			r = Math.floor(Math.random() * 256);
+			g = Math.floor(Math.random() * 256);
+			b = Math.floor(Math.random() * 256);
+			/* r = 255랜덤수 발생
+			-> 16진수로 변환 => r = r.toString(16);*/
+			
+			$('h2').queue(function(){
+				$(this).css('color','rgb('+r+','+g+','+b+')');
+				$(this).dequeue();
+			});
+			
+			$('h2').animate({'font-size':'-=10px', left:'-=100'}, 1000);
+			
+			$('h2').queue(function(){
+				$(this).css('color','black');
+				$(this).dequeue();
+			});
+		}
+		
+	});
+</script>
+</head>
+<body>
+	<button type="button" id="btn1">실행</button>
+	<hr>
+	<br>
+	<div></div>
+	<br>
+	<hr>
+	<pre>
+문자열 오른쪽으로 이동하면서 글자 크기를 확대
+왼쪽으로 이동하면서 글자크기를 축소	
+1초마다 한번씩 계속 수행
+	</pre>
+	<button type="button" id="btn2">실행</button>
+	<h2>무궁화 꽃이 피었습니다.</h2>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src = "../js/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script>
+	$(function(){
+		xhr = new XMLHttpRequest();
+		
+		$('#txt').on('click',function(){
+			$.ajax({
+				url: 'text.jsp',
+				type: 'get',
+				success: function(res){
+					datas = res.split("/");
+					code = "<ul>";
+					$.each(datas, function(i){
+						code += "<li>" + datas[i] + "</li>";
+					});
+					code += "</ul>";
+					$('#result1').html(code);
+				},
+				error: function(xhr){
+					alert("상태: "+xhr.status);
+				},
+				dataType: 'text'
+			});	
+		
+		});
+
+		// json
+		$('#jobj').click(function(){
+			$.ajax({
+				url: 'jobj.jsp',
+				success: function(v){ // v : 현재 돌고 있는 for문의 대상 (this의 의미와 같음)
+					code = "이름: " + v.name + "<br>";
+					code += "주소: " + v.addr + "<br>";
+					code += "전화: " + v.tel + "<br>";
+					$('#result2').html(code);
+				},
+				error: function(xhr){
+					alert("상태: "+xhr.status);
+				},
+				dataType: 'json'
+			});
+			
+		});
+		
+		// json 배열로 응답
+		$('#jarr').click(function(){
+			$.ajax({
+				url: 'jarr.jsp',
+				dataType: 'json',
+				success: function(datas){
+					code = "<ol>";
+					$.each(datas, function(i){
+						code += "<li>이름: "+datas[i]+"</li>";
+					});
+					code += "</ol>";
+					$('#result3').html(code);
+				},
+				error: function(xhr){
+					alert("상태: "+xhr.status);
+				}
+			});
+		});
+		
+		
+		$('#jobjarr').click(function(){
+			$.ajax({
+				url: 'jobjarr.jsp',
+				dataType: 'json',
+				success: function(datas){
+					code = "";
+					$.each(datas, function(i){
+						code += "이름: "+datas[i].name+"<br>";
+						code += "주소: "+datas[i].addr+"<br>";
+						code += "전화: "+datas[i].tel+"<br>";
+						code += "<br>";
+					});
+					$('#result4').html(code);
+				},
+				error: function(xhr){
+					alert("상태: "+xhr.status);
+				}
+			});
+			
+			
+			
+		});
+	});
+</script>
+</head>
+<body>
+	<div class = "box">
+	
+		<h3>1. 일반 방식</h3>
+		- 별도의 페이지를 생성해서 데이터 전송
+	  	<form action = "textOld.jsp" method = "get">
+			<button type = "submit" id = "send">전송(submit)</button>
+	  	</form>
+	  		
+	  	<h3>2. Ajax방식으로 전송 / 응답</h3>
+	  	- 새로운 창을 만들지 않고 그 페이지에서 전송 응답한다 (동적인 대화형 웹페이지)<br>
+	  	
+		<button type = "button" id = "txt">text데이타</button>
+		<button type = "button" id = "jobj">Json(단일)</button>
+		<button type = "button" id = "jarr">Json배열</button>
+		<button type = "button" id = "jobjarr">Json(다수)</button>
+		<br><br>
+		1. text데이타
+		<div id = "result1"></div>
+		<br>
+		2. Json오브젝트(단일)
+		<div id = "result2"></div>
+		<br>
+		3. Json배열
+		<div id = "result3"></div>
+		<br>
+		4. Json오브젝트(다수-배열)
+		<div id = "result4"></div>
+		<br>
+	</div>
+</body>
+</html>
